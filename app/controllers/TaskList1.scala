@@ -8,6 +8,7 @@ import play.api.i18n._
 @Singleton
 class TaskList1 @Inject()(val cc: ControllerComponents) extends AbstractController(cc) {
   def taskList: Action[AnyContent] = Action {
-    Ok("This works")
+    val tasks = List("Coffee", "Tea", "Milk")
+    Ok(views.html.taskList1(tasks))
   }
 }
