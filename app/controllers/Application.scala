@@ -1,9 +1,9 @@
 package controllers
 
 import javax.inject._
-
 import play.api.mvc._
 import play.api.i18n._
+
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -22,4 +22,12 @@ class Application @Inject()(val cc: ControllerComponents) extends AbstractContro
   def index(): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index(SharedExtra.SharedMessages.itWorks))
   }
+
+  //  http: //localhost:9000/productArgs?prodType=abc&prodNum=123
+  //  http://localhost:9000/product/abc/123
+  //  http://localhost:9000/productRE/ab12/123
+  def product(prodType: String, prodNum: Int): Action[AnyContent] = Action {
+    Ok(s"Product type is: $prodType, product number is: $prodNum")
+  }
+
 }
