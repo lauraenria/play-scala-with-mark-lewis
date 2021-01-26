@@ -8,8 +8,10 @@ GET        /                                                  controllers.Applic
 GET        /productArgs                                       controllers.Application.product(prodType:String, prodNum: Int)
 GET        /product/:prodType/:prodNum                        controllers.Application.product(prodType, prodNum: Int)
 #            regex = 2 letter lowercase + 2 digit eg ab12
+# http://localhost:9000/productArgs?prodType=abc&prodNum=123
 GET        /productRE/$prodType<[a-z]{2}\d\d>/:prodNum        controllers.Application.product(prodType, prodNum: Int)
-
+GET        /login1                                            controllers.TaskList1.login
+GET        /validate                                          controllers.TaskList1.validateLoginGet(username, password)
 GET        /taskList1                                         controllers.TaskList1.taskList
 
 
