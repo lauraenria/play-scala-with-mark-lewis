@@ -19,11 +19,12 @@ class TaskList1 @Inject()(val cc: ControllerComponents) extends AbstractControll
   def validateLoginPost: Action[AnyContent] = Action { request =>
     val postVals: Option[Map[String, Seq[String]]] = request.body.asFormUrlEncoded
     postVals.map { args =>
-      val username: Seq[String] = args("username")
-      val password: Seq[String] = args("password")
+      val username: String = args("username").head
+      val password: String = args("password").head
+      Redirect(routes.TaskList1.taskList())
       Ok(s"$username logged in with $password.")
     }.getOrElse(
-      Ok(s"oop"))
+      Redirect(routes.TaskList1.login()))
   }
 
   def taskList: Action[AnyContent] = Action {
