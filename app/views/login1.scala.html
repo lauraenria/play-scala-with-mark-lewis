@@ -3,9 +3,24 @@
 
 @main("Login") {
     <h2>Login</h2>
-    <form method="get" action="validatelogin1">
+    @*
+    action="validateGet1"> must match in routes
+    GET /validateGet1 controllers.TaskList1.validateLoginGet(username, password)
+    *@
+    <form method="get" action="validateGet1">
         Username: <input type="text" name="username">
+        <br>
         Password: <input type="password" name="password">
+        <bt></bt>
         <input type="submit">
     </form>
+
+    <form method="post" action="validatePost1">
+        Username: <input type="text" name="username">
+        <br>
+        Password: <input type="password" name="password">
+        <bt></bt>
+        <input type="submit">
+    </form>
+
 }
