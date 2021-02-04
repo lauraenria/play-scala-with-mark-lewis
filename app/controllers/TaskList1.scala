@@ -22,7 +22,7 @@ class TaskList1 @Inject()(val cc: ControllerComponents) extends AbstractControll
       val username: String = args("username").head
       val password: String = args("password").head
       Redirect(routes.TaskList1.taskList())
-      Ok(s"$username logged in with $password.")
+      //      Ok(s"$username logged in with $password.")
     }.getOrElse(
       Redirect(routes.TaskList1.login()))
   }
