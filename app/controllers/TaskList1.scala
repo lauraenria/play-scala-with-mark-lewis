@@ -1,7 +1,8 @@
 package controllers
 
-import javax.inject._
+import models.TaskListInMemoryModel
 
+import javax.inject._
 import play.api.mvc._
 import play.api.i18n._
 
@@ -21,8 +22,9 @@ class TaskList1 @Inject()(val cc: ControllerComponents) extends AbstractControll
     postVals.map { args =>
       val username: String = args("username").head
       val password: String = args("password").head
-      Redirect(routes.TaskList1.taskList())
-      //      Ok(s"$username logged in with $password.")
+      if (TaskListInMemoryModel.validateUser(username, password)) {
+        Redirect(routes.TaskList1.taskList())
+      } else Redirect(routes.TaskList1.login())
     }.getOrElse(
       Redirect(routes.TaskList1.login()))
   }
